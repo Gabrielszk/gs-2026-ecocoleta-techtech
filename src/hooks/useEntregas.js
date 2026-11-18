@@ -11,12 +11,12 @@ export function useEntregas() {
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState(null)
 
-  const recarregar = useCallback(async () => {
-    setCarregando(true)
-    setErro(null)
+  // Busca os dados; só altera o estado depois da resposta da API.
+  const buscar = useCallback(async () => {
     try {
       const lista = await entregasService.listar()
       setEntregas([...lista].sort(maisRecentesPrimeiro))
+      setErro(null)
     } catch (e) {
       setErro(e.message)
     } finally {
@@ -24,9 +24,15 @@ export function useEntregas() {
     }
   }, [])
 
+  /** Recarrega mostrando o indicador de carregamento (botão "Tentar novamente"). */
+  const recarregar = useCallback(() => {
+    setCarregando(true)
+    return buscar()
+  }, [buscar])
+
   useEffect(() => {
-    recarregar()
-  }, [recarregar])
+    buscar()
+  }, [buscar])
 
   const criar = useCallback(async (dados) => {
     const nova = await entregasService.criar(dados)

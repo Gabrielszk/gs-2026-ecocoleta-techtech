@@ -10,12 +10,12 @@ export function useMoradores() {
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState(null)
 
-  const recarregar = useCallback(async () => {
-    setCarregando(true)
-    setErro(null)
+  // Busca os dados; só altera o estado depois da resposta da API.
+  const buscar = useCallback(async () => {
     try {
       const lista = await moradoresService.listar()
       setMoradores([...lista].sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR')))
+      setErro(null)
     } catch (e) {
       setErro(e.message)
     } finally {
@@ -23,9 +23,15 @@ export function useMoradores() {
     }
   }, [])
 
+  /** Recarrega mostrando o indicador de carregamento (botão "Tentar novamente"). */
+  const recarregar = useCallback(() => {
+    setCarregando(true)
+    return buscar()
+  }, [buscar])
+
   useEffect(() => {
-    recarregar()
-  }, [recarregar])
+    buscar()
+  }, [buscar])
 
   const criar = useCallback(async (dados) => {
     const novo = await moradoresService.criar(dados)

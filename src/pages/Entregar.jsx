@@ -8,10 +8,12 @@ import { Carregando } from '../components/ui/Carregando'
 export function Entregar({ moradores, entregas, balanca, mostrarToast, irPara }) {
   const [inicial, setInicial] = useState(null)
   const [pesagemEmUso, setPesagemEmUso] = useState(null)
+  const [versaoForm, setVersaoForm] = useState(0) // muda a key para reiniciar o formulário
 
   function usarPesagem(p) {
     setPesagemEmUso(p.idLocal)
     setInicial({ material: p.material, pesoKg: String(p.pesoKg).replace('.', ','), origem: 'balanca' })
+    setVersaoForm((v) => v + 1)
     mostrarToast('Pesagem carregada. Agora escolha o morador.')
   }
 
@@ -20,7 +22,10 @@ export function Entregar({ moradores, entregas, balanca, mostrarToast, irPara })
       const nova = await entregas.criar(dados)
       if (pesagemEmUso) balanca.descartarPesagem(pesagemEmUso)
       setPesagemEmUso(null)
-      setInicial(null)
+      if (inicial) {
+        setInicial(null)
+        setVersaoForm((v) => v + 1)
+      }
       mostrarToast(`Entrega registrada: +${nova.pontos} pontos!`)
     } catch (e) {
       mostrarToast(e.message, 'erro')
@@ -44,7 +49,7 @@ export function Entregar({ moradores, entregas, balanca, mostrarToast, irPara })
         />
       ) : (
         <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start">
-          <FormEntrega moradores={moradores.moradores} inicial={inicial} aoSalvar={salvar} />
+          <FormEntrega key={versaoForm} moradores={moradores.moradores} inicial={inicial} aoSalvar={salvar} />
           <PainelBalanca conexao={balanca.conexao} telemetria={balanca.telemetria} pesagens={balanca.pesagens} aoUsarPesagem={usarPesagem} />
         </div>
       )}

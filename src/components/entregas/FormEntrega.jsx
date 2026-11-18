@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Botao } from '../ui/Botao'
 import { Campo, classeInput } from '../ui/Campo'
 import { CHAVES_MATERIAIS, MATERIAIS, PEVS, PESO_MAX_KG, calcularCo2Evitado, calcularPontos } from '../../lib/regras'
@@ -9,15 +9,12 @@ const vazio = (moradorId = '') => ({ moradorId, material: 'plastico', pesoKg: ''
 /**
  * Formulário de entrega de recicláveis com simulação de pontos em tempo real.
  * - `inicial`: preenche o formulário (edição ou pesagem vinda da balança).
+ *   Para trocar os valores iniciais, a página remonta o componente com outra `key`.
  */
 export function FormEntrega({ moradores, inicial, titulo = 'Registrar entrega', textoBotao = 'Registrar entrega', aoSalvar, aoCancelar }) {
   const [valores, setValores] = useState(() => ({ ...vazio(), ...inicial }))
   const [erros, setErros] = useState({})
   const [salvando, setSalvando] = useState(false)
-
-  useEffect(() => {
-    if (inicial) setValores((v) => ({ ...v, ...inicial }))
-  }, [inicial])
 
   const alterar = (campo, valor) => {
     setValores((v) => ({ ...v, [campo]: valor }))

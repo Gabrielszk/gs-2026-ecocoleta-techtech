@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Botao } from '../ui/Botao'
 import { Campo, classeInput } from '../ui/Campo'
 import { temErros, validarMorador } from '../../lib/validacao'
@@ -10,14 +10,10 @@ const VAZIO = { nome: '', bairro: '' }
  * Se receber `emEdicao`, preenche os campos e muda o texto do botão.
  */
 export function FormMorador({ emEdicao, aoSalvar, aoCancelarEdicao }) {
-  const [valores, setValores] = useState(VAZIO)
+  // O componente é remontado (prop key) quando muda o morador em edição.
+  const [valores, setValores] = useState(() => (emEdicao ? { nome: emEdicao.nome, bairro: emEdicao.bairro } : VAZIO))
   const [erros, setErros] = useState({})
   const [salvando, setSalvando] = useState(false)
-
-  useEffect(() => {
-    setValores(emEdicao ? { nome: emEdicao.nome, bairro: emEdicao.bairro } : VAZIO)
-    setErros({})
-  }, [emEdicao])
 
   const alterar = (campo) => (e) => {
     setValores((v) => ({ ...v, [campo]: e.target.value }))

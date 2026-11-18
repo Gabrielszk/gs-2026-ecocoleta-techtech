@@ -38,7 +38,7 @@ export function Inicio({ indicadores, irPara }) {
           <BarraProgresso rotulo="Meta do bairro neste mês" valor={meta.pct} tamanho="lg" />
           <p className="text-tinta/80">
             <strong className="text-mata-900">{formatarKg(meta.atingidoKg)}</strong> de {formatarKg(meta.alvoKg)} desviados do aterro em{' '}
-            {new Date().toLocaleDateString('pt-BR', { month: 'long' })}.
+            {meta.mes}.
           </p>
         </div>
       </section>

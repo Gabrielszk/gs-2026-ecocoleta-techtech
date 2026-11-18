@@ -41,6 +41,7 @@ export function useIndicadores(entregas, moradores, moradorId = null) {
         alvoKg: META_MENSAL_BAIRRO_KG,
         atingidoKg: doMes.totalKg,
         pct: percentual(doMes.totalKg, META_MENSAL_BAIRRO_KG),
+        mes: new Date().toLocaleDateString('pt-BR', { month: 'long' }),
       },
     }
   }, [entregas, moradores, moradorId])

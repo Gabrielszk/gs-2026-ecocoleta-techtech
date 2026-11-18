@@ -114,6 +114,7 @@ export function Extrato({ moradores, entregas, indicadores, moradorId, aoEscolhe
 
           {emEdicao && (
             <FormEntrega
+              key={emEdicao.id}
               moradores={moradores.moradores}
               inicial={{ ...emEdicao, pesoKg: String(emEdicao.pesoKg).replace('.', ',') }}
               titulo="Corrigir entrega"

@@ -60,7 +60,7 @@ export function Moradores({ moradores, entregas, indicadores, mostrarToast, irPa
 
       <div className="grid gap-6 lg:grid-cols-[22rem_1fr] lg:items-start">
         <div className="lg:sticky lg:top-24">
-          <FormMorador emEdicao={emEdicao} aoSalvar={salvar} aoCancelarEdicao={() => setEmEdicao(null)} />
+          <FormMorador key={emEdicao?.id ?? 'novo'} emEdicao={emEdicao} aoSalvar={salvar} aoCancelarEdicao={() => setEmEdicao(null)} />
         </div>
 
         <section className="flex flex-col gap-4" aria-labelledby="titulo-lista">
