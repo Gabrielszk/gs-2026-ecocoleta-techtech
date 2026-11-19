@@ -2,14 +2,13 @@ import { useMemo } from 'react'
 import { CartaoIndicador } from '../components/indicadores/CartaoIndicador'
 import { GraficoMateriais } from '../components/indicadores/GraficoMateriais'
 import { BarraProgresso } from '../components/indicadores/BarraProgresso'
-import { PainelBalanca } from '../components/balanca/PainelBalanca'
 import { TabelaEntregas } from '../components/entregas/TabelaEntregas'
 import { Carregando } from '../components/ui/Carregando'
 import { AvisoErro } from '../components/ui/AvisoErro'
 import { EstadoVazio } from '../components/ui/EstadoVazio'
 import { formatarKg, formatarReais } from '../lib/regras'
 
-export function Cooperativa({ moradores, entregas, indicadores, balanca }) {
+export function Cooperativa({ moradores, entregas, indicadores }) {
   const { geral, doMes, meta, ranking } = indicadores
 
   const nomes = useMemo(() => Object.fromEntries(moradores.moradores.map((m) => [m.id, m.nome])), [moradores.moradores])
@@ -18,7 +17,7 @@ export function Cooperativa({ moradores, entregas, indicadores, balanca }) {
     <div className="flex flex-col gap-6">
       <header>
         <h1 className="font-display text-4xl font-extrabold text-mata-900">Painel da cooperativa</h1>
-        <p className="mt-1 text-lg text-tinta/75">Estoque por material, valor estimado de venda e situação do ponto de coleta.</p>
+        <p className="mt-1 text-lg text-tinta/75">Estoque por material, valor estimado de venda e quem mais recicla no bairro.</p>
       </header>
 
       {entregas.erro && <AvisoErro mensagem={entregas.erro} aoTentarNovamente={entregas.recarregar} />}
@@ -45,8 +44,6 @@ export function Cooperativa({ moradores, entregas, indicadores, balanca }) {
             </section>
 
             <div className="flex flex-col gap-6">
-              <PainelBalanca conexao={balanca.conexao} telemetria={balanca.telemetria} pesagens={balanca.pesagens} compacto />
-
               <section className="rounded-2xl border-2 border-mata-100 bg-white p-5" aria-labelledby="titulo-ranking">
                 <h2 id="titulo-ranking" className="font-display text-2xl font-semibold text-mata-900">
                   Quem mais recicla

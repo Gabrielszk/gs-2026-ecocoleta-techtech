@@ -7,7 +7,7 @@
 
 | Ferramenta | Finalidade |
 |---|---|
-| **Claude (Anthropic)**, modelo Claude Opus 5.5, no app Claude | Gerar a estrutura inicial do app React, os componentes, os custom hooks, a camada de services, o firmware da balança ESP32 e rascunhos de documentação, a partir da documentação base escrita pela equipe |
+| **Claude (Anthropic)**, modelo Claude Opus 5.5, no app Claude | Gerar a estrutura inicial do app React, os componentes, os custom hooks, a camada de services e rascunhos de documentação, a partir da documentação base escrita pela equipe |
 | ✏️ *(outras ferramentas, se usaram: ChatGPT, Copilot etc.)* | ✏️ |
 
 ## 2. Interações realizadas (exemplos representativos)
@@ -17,7 +17,7 @@
 >
 > *(Anexos: PDF do desafio FIAP GS CitizenTech e a "Documentação Base do Projeto – EcoColeta SP", escrita pela equipe com as 6 perguntas e a divisão em 4 frentes.)*
 
-**Resposta resumida:** a IA leu os dois PDFs, listou os requisitos de cada disciplina (React + Vite, Tailwind, 8+ componentes, 2+ custom hooks, CRUD em API externa, 15+ commits, AI.md, deploy; e no Edge: Wokwi, 3+ estados, leitura inválida, suavização, `millis()`) e propôs integrar as duas entregas: a balança ESP32 publica via MQTT e o app web mostra os dados ao vivo.
+**Resposta resumida:** a IA leu os dois PDFs, listou os requisitos de cada disciplina (React + Vite, Tailwind, 8+ componentes, 2+ custom hooks, CRUD em API externa, 15+ commits, AI.md, deploy; e no Edge: Wokwi, 3+ estados, leitura inválida, suavização, `millis()`). A IA chegou a propor uma integração do app com a balança ESP32 da disciplina de Edge (via MQTT), mas a equipe pediu para **remover** essa parte, porque só Front-end e Web Development compartilham a mesma aplicação.
 
 **Prompt 2** ✏️ *(colem aqui outro prompt real, ex.: um pedido de ajuste de layout, explicação de um hook ou correção de bug)*
 > ✏️
@@ -30,10 +30,10 @@
 |---|---|---|
 | Regras de negócio (`src/lib/regras.js`) | Implementação das funções de pontos, CO₂, resumo e metas | Tabela de pontos por material e conceito de "Pontos Verdes" vieram da documentação base da equipe ✏️ |
 | Services (`src/services/`) | Cliente REST para MockAPI, adaptador local para modo demonstração | ✏️ criação do projeto no MockAPI, configuração da URL |
-| Custom hooks (`src/hooks/`) | `useMoradores`, `useEntregas`, `useIndicadores`, `useBalancaAoVivo`, `usePreferencias`, `useToast` | ✏️ |
-| Componentes e páginas | 19 componentes e 5 páginas com Tailwind | ✏️ ajustes de texto, cores, telas |
+| Custom hooks (`src/hooks/`) | `useMoradores`, `useEntregas`, `useIndicadores`, `usePreferencias`, `useToast` | ✏️ |
+| Componentes e páginas | 18 componentes e 5 páginas com Tailwind | ✏️ ajustes de texto, cores, telas |
 | Refatoração | Remontar formulários com `key` em vez de `setState` dentro de `useEffect`, seguindo os avisos do linter (oxlint) | — |
-| Firmware ESP32 (entrega de Edge) | Máquina de estados, média móvel, fila offline, MQTT | ✏️ limites escolhidos e testes no Wokwi |
+| Remoção da integração com a balança | Retirada do hook MQTT, do painel ao vivo e da biblioteca `mqtt` a pedido da equipe | Decisão da equipe de manter o app só com o escopo de Front-end/Web |
 
 ## 4. Validação das respostas
 
@@ -41,21 +41,20 @@ O que já foi verificado durante a geração:
 - `npm run build` sem erros; o linter `oxlint` foi executado e os avisos foram corrigidos (restaram 3 falsos positivos do padrão de busca assíncrona de dados).
 - O app foi aberto em um navegador automatizado, em tela de computador (1280px) e de celular (390px), e as cinco telas foram conferidas por captura de tela.
 - Fluxo testado de ponta a ponta: validação de formulário vazio → cadastro de morador → registro de entrega com simulação de pontos (2,4 kg de alumínio = 60 pts, conforme a tabela) → mensagem de confirmação.
-- A regra de pontos do app foi conferida com a do firmware (mesma tabela: 10/5/25/3 pts por kg).
+- A regra de pontos foi conferida com a tabela da documentação base (10/5/25/3 pts por kg).
 
 ✏️ O que a equipe deve testar e descrever aqui:
 - [ ] CRUD completo com o MockAPI real (criar, listar, editar e excluir moradores e entregas)
-- [ ] Balança no Wokwi publicando e aparecendo em "Balança ao vivo"
 - [ ] Deploy na Vercel funcionando com a variável `VITE_API_URL`
 - [ ] Leitura do código: cada integrante sabe explicar os hooks e a separação em camadas
 - [ ] Ajustes que vocês fizeram depois de testar: ✏️
 
 ## 5. Análise crítica
 
-**Benefícios:** a IA acelerou a parte repetitiva (estrutura de pastas, formulários, estilos) e ajudou a aplicar boas práticas que a equipe estava aprendendo, como separar regras, acesso a dados e visual, e a usar acessibilidade com `aria-*`. Também ajudou a manter a mesma regra de negócio no app e no firmware.
+**Benefícios:** a IA acelerou a parte repetitiva (estrutura de pastas, formulários, estilos) e ajudou a aplicar boas práticas que a equipe estava aprendendo, como separar regras, acesso a dados e visual, e a usar acessibilidade com `aria-*`.
 
-**Limitações:** a IA não tem acesso ao Wokwi, ao MockAPI nem à Vercel da equipe, então a configuração, o deploy e os testes com a balança real/simulada precisam ser feitos por nós. Ela também não conhece o bairro nem conversou com catadores: o problema, o cidadão e as decisões de produto vieram da pesquisa da equipe. Valores de preço e CO₂ são estimativas simuladas e foram marcados assim no app.
+**Limitações:** a IA não tem acesso ao MockAPI nem à Vercel da equipe, então a configuração, o deploy e os testes com a API real precisam ser feitos por nós. Ela também propôs um recurso fora do escopo pedido (integração com a balança), que a equipe precisou identificar e pedir para retirar. Ela também não conhece o bairro nem conversou com catadores: o problema, o cidadão e as decisões de produto vieram da pesquisa da equipe. Valores de preço e CO₂ são estimativas simuladas e foram marcados assim no app.
 
-**Dificuldades:** ✏️ *(ex.: entender o fluxo de custom hooks, configurar variáveis de ambiente, conexão MQTT bloqueada na rede da faculdade etc.)*
+**Dificuldades:** ✏️ *(ex.: entender o fluxo de custom hooks, configurar variáveis de ambiente, entender o que cada disciplina pedia etc.)*
 
 **Reflexão da equipe:** ✏️

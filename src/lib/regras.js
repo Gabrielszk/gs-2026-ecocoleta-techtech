@@ -1,7 +1,6 @@
 /**
  * Regras de negócio do EcoColeta SP.
- * Funções puras: não acessam API nem React. São as MESMAS regras usadas
- * no firmware da balança (edge/sketch.ino), para que os pontos batam.
+ * Funções puras: não acessam API nem React.
  *
  * Valores de preço e CO2 são ESTIMATIVAS SIMULADAS para o protótipo,
  * baseadas em ordens de grandeza de referências públicas do setor.
@@ -19,7 +18,7 @@ export const CHAVES_MATERIAIS = Object.keys(MATERIAIS)
 /** Meta mensal de reciclagem do bairro piloto (kg). */
 export const META_MENSAL_BAIRRO_KG = 500
 
-/** Peso máximo aceito por entrega — mesmo limite seguro da balança (célula de 50 kg). */
+/** Peso máximo aceito por entrega (capacidade da balança do PEV). */
 export const PESO_MAX_KG = 48
 
 /** Pontos de entrega (PEVs) do bairro piloto. Dados simulados. */

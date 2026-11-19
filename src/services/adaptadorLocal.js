@@ -34,7 +34,6 @@ function dadosIniciais() {
     pesoKg,
     pontos: Math.round(pesoKg * fator[material]),
     pev,
-    origem: 'manual',
     criadoEm: diasAtras(dias, 9 + i),
   }))
   return { moradores, entregas }

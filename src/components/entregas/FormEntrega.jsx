@@ -4,11 +4,11 @@ import { Campo, classeInput } from '../ui/Campo'
 import { CHAVES_MATERIAIS, MATERIAIS, PEVS, PESO_MAX_KG, calcularCo2Evitado, calcularPontos } from '../../lib/regras'
 import { paraNumero, temErros, validarEntrega } from '../../lib/validacao'
 
-const vazio = (moradorId = '') => ({ moradorId, material: 'plastico', pesoKg: '', pev: PEVS[0], origem: 'manual' })
+const vazio = (moradorId = '') => ({ moradorId, material: 'plastico', pesoKg: '', pev: PEVS[0] })
 
 /**
  * Formulário de entrega de recicláveis com simulação de pontos em tempo real.
- * - `inicial`: preenche o formulário (edição ou pesagem vinda da balança).
+ * - `inicial`: preenche o formulário (usado na correção de uma entrega).
  *   Para trocar os valores iniciais, a página remonta o componente com outra `key`.
  */
 export function FormEntrega({ moradores, inicial, titulo = 'Registrar entrega', textoBotao = 'Registrar entrega', aoSalvar, aoCancelar }) {
@@ -83,7 +83,7 @@ export function FormEntrega({ moradores, inicial, titulo = 'Registrar entrega', 
       </fieldset>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Campo rotulo="Peso (kg)" erro={erros.pesoKg} dica={valores.origem === 'balanca' ? 'Peso lido pela balança inteligente.' : `De 0,01 a ${PESO_MAX_KG} kg.`}>
+        <Campo rotulo="Peso (kg)" erro={erros.pesoKg} dica={`De 0,01 a ${PESO_MAX_KG} kg.`}>
           {(p) => (
             <input
               {...p}

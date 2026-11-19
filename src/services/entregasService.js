@@ -5,7 +5,7 @@ import { paraNumero } from '../lib/validacao'
 const RECURSO = 'entregas'
 
 /** Monta o registro aplicando a regra de pontos (o cliente nunca envia pontos "na mão"). */
-function montar({ moradorId, material, pesoKg, pev, origem }) {
+function montar({ moradorId, material, pesoKg, pev }) {
   const peso = Math.round(paraNumero(pesoKg) * 100) / 100
   return {
     moradorId: String(moradorId),
@@ -13,7 +13,6 @@ function montar({ moradorId, material, pesoKg, pev, origem }) {
     pesoKg: peso,
     pontos: calcularPontos(material, peso),
     pev,
-    origem: origem ?? 'manual',
   }
 }
 

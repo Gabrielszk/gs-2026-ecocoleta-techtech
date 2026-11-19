@@ -12,7 +12,6 @@ import { Cooperativa } from './pages/Cooperativa'
 import { useMoradores } from './hooks/useMoradores'
 import { useEntregas } from './hooks/useEntregas'
 import { useIndicadores } from './hooks/useIndicadores'
-import { useBalancaAoVivo } from './hooks/useBalancaAoVivo'
 import { usePreferencias } from './hooks/usePreferencias'
 import { useToast } from './hooks/useToast'
 import { modoDemonstracao } from './services/apiClient'
@@ -29,7 +28,6 @@ export default function App() {
   // Lógica e dados ficam nos custom hooks; App só distribui para as páginas.
   const moradores = useMoradores()
   const entregas = useEntregas()
-  const balanca = useBalancaAoVivo()
   const indicadores = useIndicadores(entregas.entregas, moradores.moradores, moradorId)
   const { fonteGrande, alternarFonte } = usePreferencias()
   const { toast, mostrar, fechar } = useToast()
@@ -52,7 +50,7 @@ export default function App() {
     window.scrollTo({ top: 0 })
   }
 
-  const comum = { moradores, entregas, indicadores, balanca, mostrarToast: mostrar, irPara }
+  const comum = { moradores, entregas, indicadores, mostrarToast: mostrar, irPara }
 
   return (
     <>

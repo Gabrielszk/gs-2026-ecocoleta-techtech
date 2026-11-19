@@ -20,7 +20,7 @@ export function TabelaEntregas({ entregas, nomeMorador, aoEditar, aoExcluir }) {
             <th className="px-4 py-3">Material</th>
             <th className="px-4 py-3 text-right">Peso</th>
             <th className="px-4 py-3 text-right">Pontos</th>
-            <th className="px-4 py-3">Origem</th>
+            <th className="px-4 py-3">Ponto de entrega</th>
             {comAcoes && <th className="px-4 py-3"><span className="sr-only">Ações</span></th>}
           </tr>
         </thead>
@@ -34,13 +34,7 @@ export function TabelaEntregas({ entregas, nomeMorador, aoEditar, aoExcluir }) {
               </td>
               <td className="text-right tabular-nums sm:px-4 sm:py-3">{formatarKg(e.pesoKg)}</td>
               <td className="font-bold text-mata-700 tabular-nums sm:px-4 sm:py-3 sm:text-right">+{e.pontos} pts</td>
-              <td className="text-right text-sm sm:px-4 sm:py-3 sm:text-left">
-                {e.origem === 'balanca' ? (
-                  <span className="rounded-full bg-mata-100 px-2 py-0.5 font-bold text-mata-900">Balança</span>
-                ) : (
-                  <span className="text-tinta/70">Manual</span>
-                )}
-              </td>
+              <td className="col-span-2 text-sm text-tinta/70 sm:col-span-1 sm:px-4 sm:py-3 sm:text-base">{e.pev}</td>
               {comAcoes && (
                 <td className="col-span-2 flex gap-2 pt-2 sm:table-cell sm:px-4 sm:py-3 sm:text-right">
                   {aoEditar && (
