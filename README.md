@@ -22,10 +22,10 @@
 
 | Nome | RM |
 |---|---|
-• Willian Barboza Pontes Fernandes— | [569736] 
-• Caio Portela do Nascimento — | [572562] 
-• Gabriel Suarez Kulisauskas — | [569893] 
-• Paulo Henrique Franca da Silva— | [573174]
+• Willian Barboza Pontes Fernandes | [569736] 
+• Caio Portela do Nascimento  | [572562] 
+• Gabriel Suarez Kulisauskas  | [569893] 
+• Paulo Henrique Franca da Silva | [573174]
 
 ---
 
