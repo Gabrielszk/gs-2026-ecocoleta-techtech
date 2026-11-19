@@ -107,10 +107,8 @@ src/
 5. Crie o arquivo `.env` na raiz (veja `.env.example`):
 
 ```
-VITE_API_URL=https://xxxxxxxx.mockapi.io/api/v1
+VITE_API_URL=https://6afe46803a0e70bc8d533a3b.mockapi.io/api/v1
 ```
-
-> Sem `VITE_API_URL` o app entra em **modo demonstração** (aviso amarelo no topo) e guarda os dados no navegador, com a mesma interface REST. Para a avaliação, configure a API.
 
 ## Instalação e execução
 
