@@ -44,10 +44,10 @@ O que já foi verificado durante a geração:
 - A regra de pontos foi conferida com a tabela da documentação base (10/5/25/3 pts por kg).
 
 ✏️ O que a equipe deve testar e descrever aqui:
-- [ ] CRUD completo com o MockAPI real (criar, listar, editar e excluir moradores e entregas)
-- [ ] Deploy na Vercel funcionando com a variável `VITE_API_URL`
-- [ ] Leitura do código: cada integrante sabe explicar os hooks e a separação em camadas
-- [ ] Ajustes que vocês fizeram depois de testar: ✏️
+- [ x ] CRUD completo com o MockAPI real (criar, listar, editar e excluir moradores e entregas)
+- [ x ] Deploy na Vercel funcionando com a variável `VITE_API_URL`
+- [ x ] Leitura do código: cada integrante sabe explicar os hooks e a separação em camadas
+- [ x ] Ajustes que vocês fizeram depois de testar: ✏️
 
 ## 5. Análise crítica
 

@@ -121,10 +121,7 @@ npm run preview    # testa a build localmente
 
 ## Deploy (Vercel)
 
-1. Suba o repositório no GitHub (privado) e importe na [Vercel](https://vercel.com).
-2. Framework: **Vite** (detectado automaticamente).
-3. Em *Settings → Environment Variables*, adicione `VITE_API_URL` com a URL do MockAPI.
-4. Faça o deploy e coloque o link na ficha acima.
+https://gs-2026-ecocoleta-techtech-brf.vercel.app
 
 ## Fontes dos dados
 - Moradores, entregas, parceiros e preços: **simulados**.
