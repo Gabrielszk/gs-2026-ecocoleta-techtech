@@ -13,11 +13,11 @@
 ## 2. Interações realizadas (exemplos representativos)
 
 **Prompt 1 (contexto e pedido inicial)**
-> "tenho que fazer um trabalho [...] das matérias Edge Computing & Computer Systems, Front-end Design, Web Development, também te passarei um pdf o qual será usado de base para cada trabalho das matérias, nele contém as regras que você deve seguir e os conteúdos que decidi fazer dos trabalhos"
+> "tenho que fazer um trabalho [...] das matérias , Front-end Design, Web Development, também te passarei um pdf o qual será usado de base para cada trabalho das matérias, nele contém as regras que você deve seguir e os conteúdos que decidi fazer dos trabalhos"
 >
 > *(Anexos: PDF do desafio FIAP GS CitizenTech e a "Documentação Base do Projeto – EcoColeta SP", escrita pela equipe com as 6 perguntas e a divisão em 4 frentes.)*
 
-**Resposta resumida:** a IA leu os dois PDFs, listou os requisitos de cada disciplina (React + Vite, Tailwind, 8+ componentes, 2+ custom hooks, CRUD em API externa, 15+ commits, AI.md, deploy; e no Edge: Wokwi, 3+ estados, leitura inválida, suavização, `millis()`). A IA chegou a propor uma integração do app com a balança ESP32 da disciplina de Edge (via MQTT), mas a equipe pediu para **remover** essa parte, porque só Front-end e Web Development compartilham a mesma aplicação.
+**Resposta resumida:** a IA leu os PDFs e listou os requisitos de Front-end e Web Development (React + Vite, Tailwind, 8+ componentes, 2+ custom hooks, CRUD em API externa, 15+ commits, AI.md e deploy). Ela também propôs integrar o app com a balança ESP32 da disciplina de Edge, mas a equipe pediu para remover essa parte, porque só Front-end e Web Development compartilham a mesma aplicação.
 
 **Prompt 2** ✏️ *(colem aqui outro prompt real, ex.: um pedido de ajuste de layout, explicação de um hook ou correção de bug)*
 > ✏️
@@ -55,6 +55,6 @@ O que já foi verificado durante a geração:
 
 **Limitações:** a IA não tem acesso ao MockAPI nem à Vercel da equipe, então a configuração, o deploy e os testes com a API real precisam ser feitos por nós. Ela também propôs um recurso fora do escopo pedido (integração com a balança), que a equipe precisou identificar e pedir para retirar. Ela também não conhece o bairro nem conversou com catadores: o problema, o cidadão e as decisões de produto vieram da pesquisa da equipe. Valores de preço e CO₂ são estimativas simuladas e foram marcados assim no app.
 
-**Dificuldades:** ✏️ *(ex.: entender o fluxo de custom hooks, configurar variáveis de ambiente, entender o que cada disciplina pedia etc.)*
+**Dificuldades:** No começo a equipe não tinha lido com atenção o que cada desafio pedia e precisou voltar ao PDF para entender, por exemplo, que a disciplina de Edge pedia um vídeo no YouTube e que só Front-end e Web Development usam a mesma aplicação. Outra dificuldade foi perceber que a IA tinha colocado no app uma integração com a balança que não era pedida nessas disciplinas, e precisamos pedir para remover.
 
-**Reflexão da equipe:** ✏️
+**Reflexão da equipe:** A IA ajudou a ganhar tempo na parte repetitiva e a organizar o projeto em camadas (regras de negócio, acesso à API, hooks e componentes), o que ajudou a entender melhor essa separação. Por outro lado, aprendemos que não dá para aceitar tudo o que ela gera: ela acrescentou coisas fora do escopo e não tinha acesso ao nosso MockAPI nem ao deploy, então testar e configurar ficou com a gente. A principal lição foi ler o enunciado antes de começar e revisar o código para que todos consigam explicar cada parte.

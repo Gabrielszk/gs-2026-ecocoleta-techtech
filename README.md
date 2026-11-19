@@ -7,7 +7,7 @@
 
 | Campo | Resposta |
 |---|---|
-| **Nome da CitizenTech** | EcoColeta SP |
+| **Nome da CitizenTech** | EcoColeta SP-techtech |
 | **Cidade e bairro** | São Paulo · bairro piloto Jardim Pery (Zona Norte) |
 | **Cidadão beneficiado** | Catadores de cooperativas de reciclagem (direto) e moradores de bairros com pouca coleta seletiva (indireto) |
 | **Problema, em uma frase** | Menos de 3% do lixo de SP passa pela coleta seletiva porque o morador não tem incentivo nem ponto claro de entrega, e a cooperativa pesa tudo à mão, sem previsão de estoque. |
@@ -22,11 +22,10 @@
 
 | Nome | RM |
 |---|---|
-| [Nome completo 1] | RM [00000] |
-| [Nome completo 2] | RM [00000] |
-| [Nome completo 3] | RM [00000] |
-| [Nome completo 4] | RM [00000] |
-| [Nome completo 5] | RM [00000] |
+• Willian Barboza Pontes Fernandes— RM: [569736] 
+• Caio Portela do Nascimento — RM: [572562] 
+• Gabriel Suarez Kulisauskas — RM: [569893] 
+• Paulo Henrique Franca da Silva— RM: [573174]
 
 ---
 
